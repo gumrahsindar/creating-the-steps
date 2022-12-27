@@ -1,11 +1,11 @@
 const progress = document.getElementById('progress');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
-const circles = document.querySelectorAll('.circle');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const circles = document.querySelectorAll('.steps');
 
 let currentActive = 1;
 
-nextButton.addEventListener('click', () => {
+next.addEventListener('click', () => {
   currentActive++;
   if (currentActive > circles.length) {
     currentActive = circles.length;
@@ -14,7 +14,7 @@ nextButton.addEventListener('click', () => {
   update();
 });
 
-prevButton.addEventListener('click', () => {
+prev.addEventListener('click', () => {
   currentActive--;
   if (currentActive < 1) {
     currentActive = 1;
@@ -36,11 +36,11 @@ function update() {
     ((actives.length - 1) / (circles.length - 1)) * 100 + '%';
 
   if (currentActive === 1) {
-    prevButton.disabled = true;
+    prev.disabled = true;
   } else if (currentActive === circles.length) {
-    nextButton.disabled = true;
+    next.disabled = true;
   } else {
-    prevButton.disabled = false;
-    nextButton.disabled = false;
+    prev.disabled = false;
+    next.disabled = false;
   }
 }
